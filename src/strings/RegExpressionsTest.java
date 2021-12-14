@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static strings.RegExpressions.*
-;class RegExpressionsTest {
+;
+
+import java.util.regex.PatternSyntaxException;class RegExpressionsTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -131,7 +133,14 @@ import static strings.RegExpressions.*
 		String actual = getStringWithoutSpaces(expr);
 		String expected = "20+10*2/100+4";
 		assertEquals(expected, actual);
-		
+		boolean flag = false;
+		try {
+			expr.replaceAll(")", "");
+			
+		} catch (PatternSyntaxException e) {
+			flag = true;
+		}
+		assertTrue(flag);
 	}
 
 	private String getStringWithoutSpaces(String str) {
@@ -141,22 +150,31 @@ import static strings.RegExpressions.*
 	void splitTest () {
 		String expr = " 20 +10 * 2	/100 +4     ";
 		String [] operatorsExp = {"", "+", "*", "/", "+"};
-		assertEquals(operatorsExp, getOperatorsExpression(expr));
+		assertArrayEquals(operatorsExp, getOperatorsExpression(expr));
 		String [] operandsExp = {"20", "10", "2", "100", "4"};
-		assertEquals(operandsExp, getOperandsExpression(expr));
+		assertArrayEquals(operandsExp, getOperandsExpression(expr));
+		boolean flag = false;
+		try {
+			expr.split(")");
+			
+		} catch (PatternSyntaxException e) {
+			flag = true;
+		}
+		assertTrue(flag);
 	}
 
-	private Object getOperandsExpression(String expr) {
+	private String[] getOperandsExpression(String expr) {
 		// TODO the method returns array of strings containing only the operands of the given expression
 		// see test. Based on the method split of the class String
-		return null;
+//		String str = getStringWithoutSpaces(expr);
+		return getStringWithoutSpaces(expr).split("[+*/-]");
 	}
 
 	private String[] getOperatorsExpression(String expr) {
 		// TODO the method returns array of strings containing the operators of the given expression
 		// with empty string as the first string (see test)
 		//based on the method split of the class String
-		return null;
+		return expr.split("\\s*\\d*[^+*/-]");
 	}
 	
 

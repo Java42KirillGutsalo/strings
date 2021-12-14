@@ -49,10 +49,8 @@ public static String mobileIsraelPhone() {
  * each part is the  regex of String ipV4Part()
  */
 public static String ipV4() {
-	String part = ipV4Part();
-	String delimiter = ".";
 	
-	 return String.format("(%1$s%2$s){3}%1$s", part, delimiter);
+	 return String.format("((%1$s)\\.){3}(%1$s)", ipV4Part());
 }
 
 }
