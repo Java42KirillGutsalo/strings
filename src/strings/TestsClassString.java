@@ -2,6 +2,8 @@ package strings;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.IllegalFormatException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +17,18 @@ final static String str = "I learn Java";
 	void testCharAt() {
 		assertEquals('I', str.charAt(0));
 		assertEquals('J', str.charAt(8));
+		try {
+			char t = str.charAt(-8);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
+		try {
+			char t = str.charAt(888);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
 		/* V.R.
 		 *  The cases  str.charAt(-8) and str.charAt(888) aren't tested
 		 */
@@ -35,9 +49,9 @@ final static String str = "I learn Java";
 		String str1 = "I learn Java";
 		String str2 = "I LEARN JAVA";
 		String str3 = "I lear Java";
-		assertEquals(true, str.equalsIgnoreCase(str1));
-		assertEquals(true, str.equalsIgnoreCase(str2));
-		assertEquals(false, str.equalsIgnoreCase(str3));
+		assertTrue(0 == str.compareToIgnoreCase(str1));
+		assertTrue(0 == str.compareToIgnoreCase(str2));
+		assertTrue(0 < str.compareToIgnoreCase(str3));
 		// V.R. The method compareToIgnoreCase() isn't tested at all
 	}
 
@@ -102,6 +116,18 @@ final static String str = "I learn Java";
 		assertEquals("Java", str.substring(8));
 		assertEquals("va", str.substring(10));
 		// V.R. The cases str.substring(-5) and str.substring(77) aren't checked
+		try {
+			String t = str.substring(-5);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
+		try {
+			String t = str.substring(77);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
 	}
 
 	@Test
@@ -109,7 +135,18 @@ final static String str = "I learn Java";
 		assertEquals("Java", str.substring(8, 12));
 		assertEquals("learn", str.substring(2, 7));
 		// V.R. The cases str.substring(-5, 3) and str.substring(3, 77) aren't checked
-		
+		try {
+			String t = str.substring(-5, 3);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
+		try {
+			String t = str.substring(3, 77);
+			fail("There should be exception");
+		} catch (StringIndexOutOfBoundsException e) {
+			
+		}
 	}
 
 	@Test
@@ -123,6 +160,12 @@ final static String str = "I learn Java";
 		String[] str1 = {"Hello", "my", "name", "is", "Kirill"};
 		assertEquals("Hello my name is Kirill", str.join(" ", str1));
 		// V.R. The case str.join(null, str1) isn't checked
+		try {
+			String t = String.join(null, str1);
+			fail("There should be exception");
+		} catch(NullPointerException e) {
+			
+		}
 	}
 
 	@Test
@@ -151,6 +194,12 @@ final static String str = "I learn Java";
 		// V.R. The case with exception IllegalFormatException isn't checked.
 		// For example,
 		// String t = String.format("I said: %d", "Yes");
+		try {
+			String t = String.format("I said: %d", "Yes");
+			fail("There should be exception");
+		} catch (IllegalFormatException e) {
+			
+		}
 	}
 
 }
