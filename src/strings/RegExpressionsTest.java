@@ -135,8 +135,7 @@ import static strings.RegExpressions.*
 	}
 
 	private String getStringWithoutSpaces(String str) {
-		// TODO write this method based on the method replaceAll of the class String
-		return null;
+		return str.replaceAll("\\s", "");
 	}
 	@Test
 	void splitTest () {
