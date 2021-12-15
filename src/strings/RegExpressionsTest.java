@@ -167,6 +167,7 @@ import java.util.regex.PatternSyntaxException;class RegExpressionsTest {
 		// TODO the method returns array of strings containing only the operands of the given expression
 		// see test. Based on the method split of the class String
 //		String str = getStringWithoutSpaces(expr);
+//[YG] regex too much complicated
 		return getStringWithoutSpaces(expr).split("[+*/-]");
 	}
 
@@ -174,6 +175,7 @@ import java.util.regex.PatternSyntaxException;class RegExpressionsTest {
 		// TODO the method returns array of strings containing the operators of the given expression
 		// with empty string as the first string (see test)
 		//based on the method split of the class String
+		//[YG] regex too much complicated
 		return expr.split("\\s*\\d*[^+*/-]");
 	}
 	
