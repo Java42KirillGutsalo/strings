@@ -174,7 +174,11 @@ import java.util.regex.PatternSyntaxException;class RegExpressionsTest {
 		// TODO the method returns array of strings containing the operators of the given expression
 		// with empty string as the first string (see test)
 		//based on the method split of the class String
-		return expr.split("\\s*\\d*[^+*/-]");
+		return expr.split("\\s*\\d*[^+*/-]"); 
+		/* V.R. What about the following
+		 * 	return getStringWithoutSpaces(expr).split("\\d+");
+		 * The regular expression is simpler.  
+		 */
 	}
 	
 

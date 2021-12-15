@@ -39,7 +39,8 @@ public static String arithmeticExpression() {
  * 7 digits that may or may not be separated by dash
  */
 public static String mobileIsraelPhone() {
-	
+	// V.R. Your decision is OK. I hope you also know how 
+	// to do the same by other way
 	return "(0|\\+972)(-?|\\s*)(5\\d|7[2-7])(-?\\d){7}";
 }
 /**
@@ -49,8 +50,13 @@ public static String mobileIsraelPhone() {
  * each part is the  regex of String ipV4Part()
  */
 public static String ipV4() {
+	System.out.println("Vova");
 	
-	 return String.format("((%1$s)\\.){3}(%1$s)", ipV4Part());
+	 return String.format("((%1$s)\\.){3}(%1$s)", ipV4Part());  
+	 /* V.R. Your code is OK. I prefer the following one
+	  * 	 return String.format("((%s)\\.){3}(%s)", ipV4Part(), ipV4Part());
+	  *  but it is taste only
+	  */
 }
 
 }
